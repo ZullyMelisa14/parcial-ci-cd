@@ -62,3 +62,5 @@ class TestFactorial:
         """Test factorial con número negativo"""
         with pytest.raises(ValueError):
             factorial(-1)
+
+
