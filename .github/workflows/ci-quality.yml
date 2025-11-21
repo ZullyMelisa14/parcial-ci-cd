@@ -1,0 +1,67 @@
+name: CI - Quality Assurance
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # 1. Checkout del código
+    - name: Checkout código
+      uses: actions/checkout@v4
+
+    # 2. Configurar Python
+    - name: Configurar Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    # 3. Instalar dependencias
+    - name: Instalar dependencias
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # 4. Ejecutar linter (flake8)
+    - name: Ejecutar Linter (flake8)
+      run: |
+        echo "Verificando estilo de código con flake8..."
+        flake8 src/ tests/ --count --show-source --statistics
+        echo "✅ Linter pasó exitosamente"
+
+    # 5. Verificar formato (black)
+    - name: Verificar formato (black)
+      run: |
+        echo "Verificando formato con black..."
+        black --check src/ tests/
+        echo "✅ Formato correcto"
+
+    # 6. Ejecutar pruebas unitarias con cobertura
+    - name: Ejecutar pruebas y calcular cobertura
+      run: |
+        echo "Ejecutando pruebas unitarias..."
+        pytest tests/ -v --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=80
+        echo "✅ Pruebas completadas"
+
+    # 7. Subir reporte de cobertura
+    - name: Subir reporte de cobertura
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: |
+          htmlcov/
+          coverage.xml
+
+    # 8. Comentar cobertura en PR (opcional)
+    - name: Comentar cobertura
+      if: github.event_name == 'pull_request'
+      run: |
+        echo "Cobertura de código calculada"
+        echo "Ver artefactos para detalles completos"
