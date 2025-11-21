@@ -390,8 +390,9 @@ act push -P ubuntu-latest=catthehacker/ubuntu:full-latest
 
 #### ✅ RUN EXITOSO
 
-![alt text](image.png)
+<img width="921" height="663" alt="image" src="https://github.com/user-attachments/assets/b381ae45-2b84-4f7d-a02a-3e438a4a426f" />
+
 
 #### ❌ RUN FALLIDO
 
-![alt text](image-1.png)
+<img width="921" height="530" alt="image" src="https://github.com/user-attachments/assets/3bb903d4-e325-4436-ac8f-e3f2165b7e7d" />
