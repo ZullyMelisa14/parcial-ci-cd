@@ -240,7 +240,7 @@ defecto de GitHub Actions:
 Esto es intencional: no tiene sentido probar código con errores de sintaxis o 
 que no compila.
 
-## 🐳 PARTE 3 - NEKTOS/ACT (15%)
+## 🐳 PARTE 3 - NEKTOS/ACT 
 
 ### 3.1 ¿Qué es nektos/act?
 
@@ -309,7 +309,7 @@ $ act push
 [CI - Quality Assurance/quality-check] 🏁  Job succeeded
 ```
 
-### 3.9 Troubleshooting
+### 3.8 Troubleshooting
 
 **Problema:** `Error: Cannot connect to the Docker daemon`
 ```bash
@@ -333,11 +333,11 @@ act push -P ubuntu-latest=catthehacker/ubuntu:full-latest
 
 ---
 
-## 📊 PARTE 4 - VALIDACIÓN Y LOGS (15%)
+## PARTE 4 - VALIDACIÓN Y LOGS (15%)
 
 ### 4.1 Identificación de Fallos en Logs
 
-#### 🔍 A) Fallo de Linter (flake8)
+#### A) Fallo de Linter (flake8)
 
 **Síntomas:**
 - Step "Ejecutar Linter" muestra ❌ rojo
@@ -359,7 +359,7 @@ act push -P ubuntu-latest=catthehacker/ubuntu:full-latest
 
 ---
 
-#### 🧪 B) Fallo de Pruebas Unitarias
+#### B) Fallo de Pruebas Unitarias
 
 **Síntomas:**
 - Step "Ejecutar pruebas" muestra ❌ rojo
@@ -377,7 +377,7 @@ act push -P ubuntu-latest=catthehacker/ubuntu:full-latest
 
 ---
 
-#### 📊 C) Fallo de Cobertura
+#### C) Fallo de Cobertura
 
 **Síntomas:**
 - Tests pasan (✅ verde)
